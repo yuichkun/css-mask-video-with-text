@@ -13,10 +13,29 @@
     <defs>
       <mask id="mask" x="0" y="0" height="100%" width="100%">
         <rect x="0" y="0" height="100%" width="100%"></rect>
-        <text x="50%" y="50%" fill="red" text-anchor="middle">Not Found?</text>
+        <text id="clip-text" x="50%" y="50%" fill="red" text-anchor="middle"></text>
       </mask>
     </defs>
     <rect x="0" y="0" width="100%" height="100%"></rect>
   </svg>
+  <script>
+    const textNode = document.getElementById('clip-text')
+    const NOT_FOUND = "Not Found?                       "
+
+    const LETTER_LENGTH = NOT_FOUND.length
+
+    let visibleLetterIndex = 0;
+
+    function showLetter () {
+      if(visibleLetterIndex < LETTER_LENGTH) {
+        textNode.innerHTML = NOT_FOUND.slice(0, visibleLetterIndex+1)
+        visibleLetterIndex++
+      } else {
+        visibleLetterIndex = 0
+      }
+    }
+
+    setInterval(showLetter, 500);
+  </script>
 </body>
 </html>
